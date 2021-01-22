@@ -29,6 +29,7 @@ export const Dapp: React.FC<Props> = ({
     let tokenHistroy = await getErc20Histroy(userAddress);
     // create an unique address array from token transfer event history
     let uniqueAddress = [];
+    console.log("userAdderes" + userAddress);
     console.log(tokenHistroy);
     const addrMap = new Map();
     for (const item of tokenHistroy.result) {
