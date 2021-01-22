@@ -22,7 +22,7 @@ export const Dapp: React.FC<Props> = ({
   ...props
 }) => { //userAddress wallet id
   const [info, setInfo] = useState<infoProp>();
-
+  console.log(process.env.REACT_APP_ETHERSCAN);
   //sets userAddress info (in own function to utilize async)
   const getInfo = async () => {
     //Get a list of "ERC20 - Token Transfer Events" by Address
@@ -172,7 +172,7 @@ export const Dapp: React.FC<Props> = ({
             },
           ]}
         />
-        : "No Avliable balance"}
+        : "No Avaliable balance"}
     </div>
   );
 };
