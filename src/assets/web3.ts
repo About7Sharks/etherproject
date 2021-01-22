@@ -18,9 +18,13 @@ export const getCurrentEthPrice = async () => {
   )).json()).ethereum.usd;
 };
 export const getErc20Histroy = async (user: string) => {
-  return await (await fetch(
-    `https://api.etherscan.io/api?module=account&action=tokentx&address=${user}&startblock=0&endblock=999999999&sort=asc&apikey=${apikey}`,
-  )).json();
+  try {
+    return await (await fetch(
+      `https://api.etherscan.io/api?module=account&action=tokentx&address=${user}&startblock=0&endblock=999999999&sort=asc&apikey=${apikey}`,
+    )).json();
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const getContractAbi = async (contractAddress: string) => {

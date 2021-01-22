@@ -29,6 +29,7 @@ export const Dapp: React.FC<Props> = ({
     let tokenHistroy = await getErc20Histroy(userAddress);
     // create an unique address array from token transfer event history
     let uniqueAddress = [];
+    console.log(tokenHistroy);
     const addrMap = new Map();
     for (const item of tokenHistroy.result) {
       if (!addrMap.has(item.contractAddress)) {
@@ -77,6 +78,7 @@ export const Dapp: React.FC<Props> = ({
       // returns promises after the settle (defined above)
       token: (await Promise.allSettled(dog)).map((item: any) => item.value)
         .filter((item: any) => {
+          console.log(item);
           //this filter removes tokens the userAddress isnt using
           //and also removes tokens that dont have a getBalance ABI contract method
           if (item.balance === "0.0") return;
