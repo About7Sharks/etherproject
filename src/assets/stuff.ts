@@ -8,7 +8,7 @@ export const abi = [
 ];
 
 //etherscan.io api key
-export const apikey = process.env.REACT_APP_Etherscan;
+export const apikey = process.env.REACT_APP_ETHERSCAN;
 export let provider = new ethers.providers.Web3Provider(
   (window as any).ethereum,
 );
