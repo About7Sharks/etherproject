@@ -1,5 +1,3 @@
-import { apikey } from "./stuff";
-
 export const getTokenPrice = async (contractAddress: string) => {
   try {
     return (await (await fetch(
@@ -20,7 +18,7 @@ export const getCurrentEthPrice = async () => {
 export const getErc20Histroy = async (user: string) => {
   try {
     return await (await fetch(
-      `https://api.etherscan.io/api?module=account&action=tokentx&address=${user}&startblock=0&endblock=999999999&sort=asc&apikey=${apikey}`,
+      `https://api.etherscan.io/api?module=account&action=tokentx&address=${user}&startblock=0&endblock=999999999&sort=asc&apikey=${process.env.REACT_APP_ETHERSCAN}`,
     )).json();
   } catch (e) {
     console.log(e);
@@ -29,6 +27,6 @@ export const getErc20Histroy = async (user: string) => {
 
 export const getContractAbi = async (contractAddress: string) => {
   return await (await fetch(
-    `https://api.etherscan.io/api?module=contract&action=getabi&address=${contractAddress}&apikey=${apikey}`,
+    `https://api.etherscan.io/api?module=contract&action=getabi&address=${contractAddress}&apikey=${process.env.REACT_APP_ETHERSCAN}`,
   )).json();
 };
