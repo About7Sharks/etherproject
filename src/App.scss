@@ -1,0 +1,73 @@
+// @import '~antd/dist/antd.css';
+@import '~antd/dist/antd.dark.css';
+body {
+  text-align: center;
+  background-color: #282c34;
+  
+
+}
+ *{
+   margin: 0;
+   padding: 0;
+ }
+
+span{
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+  .dapp{
+    margin-top: 50px;
+    .ant-table-wrapper{
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 10px;
+    }
+    .ant-table{      
+      border-radius: 20px;
+     tr:last-child {
+       td:first-child{
+        border-bottom-left-radius: 20px;
+       }
+      td:last-child{
+        border-bottom-right-radius:20px;
+      }
+     }
+    }
+    img{
+      margin-right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+     }
+  }
+ .navbar{
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    button{
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+  .ant-list{
+    color: white;
+    ul{
+      display: inline-flex;
+      flex-direction: column;
+    }
+    li{
+      color:  white;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: flex-start;
+     p{
+       margin: 0px;
+     }
+    }
+  }
+   
+ }
+ 
