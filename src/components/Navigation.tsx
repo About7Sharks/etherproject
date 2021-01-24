@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Menu, Modal } from "antd";
-import { BellOutlined, DashboardOutlined } from "@ant-design/icons";
+import {
+  DashboardOutlined,
+  GithubOutlined,
+  LineChartOutlined,
+} from "@ant-design/icons";
 import { Button } from "antd";
 import { WalletOutlined } from "@ant-design/icons";
+import EtherscanLogo from "../assets/etherscan-logo-circle.svg";
+import { Link } from "react-router-dom";
 const { SubMenu } = Menu;
 
 interface Props {
@@ -35,11 +41,11 @@ export const Navigation: React.FC<Props> = ({
     <div className="navbar">
       <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
         <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
-          Dashboard
+          <Link to="/dashboard">Dashboard</Link>
         </Menu.Item>
-        {/* <Menu.Item key="app" icon={<BellOutlined />}>
-          Set Alert
-        </Menu.Item> */}
+        <Menu.Item key="chart" icon={<LineChartOutlined />}>
+          <Link to="/chart">Chart</Link>
+        </Menu.Item>
       </Menu>
       <Button
         onClick={showModal}
@@ -56,16 +62,26 @@ export const Navigation: React.FC<Props> = ({
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p></p>
         <Button
+          //icon={>}
           onClick={() => {
             window.open(`https://etherscan.io/address/${user}`);
           }}
         >
+          <img src={EtherscanLogo} />
           View On Etherscan
         </Button>
         <br />
+        <Button
+          onClick={() => {
+            window.open("https://github.com/About7Sharks/etherproject");
+          }}
+        >
+          <GithubOutlined />
+          View On Github
+        </Button>
         <br />
+
         <p>More Coming Soon...</p>
       </Modal>
     </div>

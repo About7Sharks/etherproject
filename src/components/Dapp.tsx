@@ -22,15 +22,15 @@ export const Dapp: React.FC<Props> = ({
   ...props
 }) => { //userAddress wallet id
   const [info, setInfo] = useState<infoProp>();
-  console.log(process.env.REACT_APP_ETHERSCAN);
+
   //sets userAddress info (in own function to utilize async)
   const getInfo = async () => {
+    let gasPrice = await provider.getGasPrice();
+    console.log(ethers.utils.formatEther(gasPrice));
     //Get a list of "ERC20 - Token Transfer Events" by Address
     let tokenHistroy = await getErc20Histroy(userAddress);
     // create an unique address array from token transfer event history
     let uniqueAddress = [];
-    console.log("userAdderes" + userAddress);
-    console.log(tokenHistroy);
     const addrMap = new Map();
     for (const item of tokenHistroy.result) {
       if (!addrMap.has(item.contractAddress)) {

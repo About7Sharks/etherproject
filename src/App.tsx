@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { History } from "./components/History";
 import { Dapp } from "./components/Dapp";
 import { Navigation } from "./components/Navigation";
-
+import { Chart } from "./components/Chart";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 
 function App() {
@@ -22,11 +23,22 @@ function App() {
     LoadDapp();
   }, []);
   return (
-    <div className="App">
+    <Router>
       <Navigation user={user} />
-      <Dapp userAddress={user} />
+
+      <Switch>
+        <Route path={["/dashboard"]}>
+          <Dapp userAddress={user} />
+        </Route>
+        <Route
+          path="/chart"
+        >
+          <Chart coin="bitcoin" currency="usd" days={14} />
+        </Route>
+      </Switch>
+
       {/* <History user="0xa485b3e631c02834A73349CFA6c5543bB0796985" /> */}
-    </div>
+    </Router>
   );
 }
 
